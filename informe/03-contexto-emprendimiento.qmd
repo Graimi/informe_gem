@@ -1,0 +1,17 @@
+# Contexto para emprender
+
+```{r}
+#| include: false
+library(tidyverse)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+<!-- Capítulo basado en la encuesta a expertos (NES): valoración de las
+     condiciones del entorno emprendedor (financiación, políticas, educación,
+     transferencia de I+D, infraestructuras...).
+
+     Indicador esperado: nes_condiciones.csv con columnas
+     condicion, ambito, puntuacion. El gráfico habitual es de barras
+     horizontales o radar comparando Extremadura con España. -->

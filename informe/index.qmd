@@ -1,0 +1,18 @@
+# Presentación {.unnumbered}
+
+```{r}
+#| include: false
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+Informe GEM Extremadura, edición **{{< var edicion >}}**, con monográfico
+dedicado a *{{< var monografico >}}*.
+
+<!-- Pegar aquí el texto de presentación entregado (prólogo, agradecimientos,
+     equipo investigador, patrocinadores). -->
+
+## Resumen ejecutivo {.unnumbered}
+
+<!-- Texto del resumen ejecutivo de la edición. -->

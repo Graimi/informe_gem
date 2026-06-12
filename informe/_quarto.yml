@@ -1,0 +1,35 @@
+project:
+  type: book
+
+book:
+  title: "Informe GEM Extremadura"
+  subtitle: "{{< var monografico >}}"
+  author: "{{< var equipo >}}"
+  date: today
+  output-file: "informe-gem-extremadura-{{< var edicion >}}"
+  cover-image: "../ediciones/{{< var edicion >}}/recursos/portada.png"
+  chapters:
+    - index.qmd
+    - 01-actividad-emprendedora.qmd
+    - 02-perfil-emprendedor.qmd
+    - 03-contexto-emprendimiento.qmd
+    - 04-monografico.qmd
+
+lang: es
+
+execute:
+  echo: false
+  warning: false
+  message: false
+
+format:
+  html:
+    theme: cosmo
+  typst:
+    papersize: a4
+    margin:
+      x: 2.2cm
+      y: 2.5cm
+    mainfont: "Liberation Sans"
+    fontsize: 10.5pt
+    toc: true

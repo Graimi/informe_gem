@@ -1,0 +1,8 @@
+# Única fuente de verdad de la edición: los .qmd la leen como variable Quarto
+# ({{< var edicion >}}) y el código R la lee con leer_config() (R/utilidades.R).
+edicion: "2025-26"
+anio_campo: 2025          # año del trabajo de campo APS/NES
+monografico: "El reto digital del emprendimiento extremeño"
+equipo: "Equipo GEM Extremadura"
+# edicion_anterior: "2024-25"   # descomentar desde la 2ª edición: permite al
+                                # modo B arrastrar las series históricas

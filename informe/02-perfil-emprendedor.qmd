@@ -1,0 +1,27 @@
+# Perfil de la persona emprendedora
+
+```{r}
+#| include: false
+library(tidyverse)
+library(gt)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+<!-- Texto interpretativo de la edición. -->
+
+<!-- Patrón para cada indicador: añadir su CSV a procesados/ (documentándolo en
+     datos_entregados/README.md) y un bloque como el del capítulo 01:
+
+```{{r}}
+#| label: fig-perfil-edad
+#| fig-cap: "Distribución por edad de la población emprendedora. Fuente: GEM."
+leer_indicador("perfil_edad") |>
+  ggplot(aes(grupo_edad, pct, fill = ambito)) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = paleta_gem) +
+  labs(x = NULL, y = "%") +
+  theme_gem()
+```
+-->
