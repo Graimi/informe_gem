@@ -1,0 +1,12 @@
+# Presentación {.unnumbered}
+
+Informe GEM Extremadura, edición **{{< var edicion >}}**. Monográfico:
+*{{< var monografico >}}*.
+
+## Carta de la Dirección Ejecutiva del Proyecto GEM Extremadura {.unnumbered}
+
+<!-- Texto de la carta de la edición. -->
+
+## Prólogo {.unnumbered}
+
+<!-- Prólogo institucional (en 2023/24 lo firmó la Presidencia de la Junta). -->

@@ -1,0 +1,15 @@
+# Microdatos GEM: confidenciales, nunca al repositorio
+ediciones/*/microdatos/*
+!ediciones/*/microdatos/README.md
+
+# Salidas de Quarto
+informe/_book/
+informe/.quarto/
+informe/*_files/
+
+# R
+.Rproj.user/
+.Rhistory
+.RData
+renv/library/
+renv/staging/

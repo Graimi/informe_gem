@@ -1,0 +1,48 @@
+# Valores, percepciones y aptitudes emprendedoras
+
+```{r}
+#| include: false
+library(tidyverse)
+library(gt)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+<!-- Texto interpretativo de la edición. -->
+
+## La percepción de la población extremeña sobre sus valores y aptitudes para emprender
+
+<!-- Indicadores habituales: percepción de oportunidades, conocimientos y
+     habilidades, miedo al fracaso, conocer a otras personas emprendedoras —
+     comparando población emprendedora vs. no emprendedora.
+
+     Indicador esperado: percepciones.csv con columnas
+     indicador, colectivo (Emprendedora/No emprendedora), anio, pct.
+
+     Gráfico estilo GEM España (su Figura 7): barras horizontales agrupadas
+     por año con paleta_anios y etiquetas fmt_pct():
+
+```{{r}}
+#| label: fig-percepciones
+#| fig-cap: "Percepción sobre valores y actitudes para emprender (% de población adulta). Fuente: GEM-Extremadura APS."
+leer_indicador("percepciones") |>
+  ggplot(aes(pct, indicador, fill = factor(anio))) +
+  geom_col(position = "dodge") +
+  geom_text(aes(label = fmt_pct(pct)), position = position_dodge(0.9),
+            hjust = -0.15, size = 2.9, colour = colores_gem$azul) +
+  scale_fill_manual(values = paleta_anios) +
+  facet_wrap(vars(colectivo)) +
+  labs(x = "%", y = NULL) +
+  theme_gem()
+```
+-->
+
+## La percepción sobre valores, actitudes y facilidades para emprender
+
+<!-- Cultura social del emprendimiento, facilidad percibida para iniciar un
+     negocio. -->
+
+## Benchmarking sobre las percepciones, valores y aptitudes para emprender
+
+<!-- Comparativa de Extremadura con España y comunidades autónomas. -->

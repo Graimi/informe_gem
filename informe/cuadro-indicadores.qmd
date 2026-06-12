@@ -1,0 +1,17 @@
+# Cuadro sintético de resultados e indicadores {.unnumbered}
+
+```{r}
+#| include: false
+library(tidyverse)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+source(here::here("R", "tablas.R"))
+cfg <- leer_config()
+```
+
+```{r}
+#| label: tbl-cuadro-indicadores
+#| tbl-cap: !expr paste0("Cuadro de indicadores GEM Extremadura. Fuente: GEM-Extremadura APS ", cfg$anio_campo - 1, "-", cfg$anio_campo, ".")
+leer_indicador("cuadro_indicadores") |>
+  tabla_indicadores(anio_actual = cfg$anio_campo)
+```
