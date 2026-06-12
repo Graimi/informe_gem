@@ -1,0 +1,27 @@
+# Aspiraciones de la actividad emprendedora
+
+```{r}
+#| include: false
+library(tidyverse)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+<!-- Texto interpretativo de la edición. -->
+
+## Aspectos generales del negocio
+
+## Expectativas de crecimiento
+
+<!-- Empleo actual y esperado de las iniciativas. -->
+
+## Orientación innovadora
+
+<!-- Novedad de producto/servicio, tecnología empleada, competencia. -->
+
+## Orientación internacional
+
+<!-- Porcentaje de clientes en el exterior. -->
+
+## Benchmarking de las aspiraciones de la actividad emprendedora

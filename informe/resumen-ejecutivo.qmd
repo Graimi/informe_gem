@@ -1,0 +1,13 @@
+# Resumen ejecutivo {.unnumbered}
+
+<!-- Estructura habitual del resumen (una entradilla por capítulo):
+     - Percepciones emprendedoras de la población extremeña
+     - Actividad emprendedora y sus características
+     - Aspiraciones de la actividad emprendedora
+     - El entorno emprendedor en Extremadura
+     Las cifras citadas pueden insertarse en línea con `r ...` para que se
+     actualicen solas al cambiar los CSV (ver patrón en el capítulo 2). -->
+
+## Executive summary {.unnumbered}
+
+<!-- Traducción al inglés del resumen ejecutivo. -->

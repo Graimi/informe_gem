@@ -19,6 +19,16 @@ informe_gem/
 └── informe/                    # capítulos Quarto (.qmd) y configuración del libro
 ```
 
+Los capítulos siguen la estructura del informe GEM Extremadura (presentación,
+resumen ejecutivo ES/EN, introducción y metodología, cuadro sintético de
+indicadores, 1 valores y percepciones, 2 actividad emprendedora, 3 aspiraciones,
+4 entorno, 5 conclusiones, bibliografía y anexos), con la calidad de
+maquetación del informe GEM España como referencia.
+
+**Estilo visual:** los colores y convenciones gráficas viven en dos ficheros
+espejo — `R/theme_gem.R` (gráficos y tablas) e `informe/estilo-gem.typ`
+(maquetación PDF). Si cambia la identidad corporativa, solo se tocan esos dos.
+
 **Principio rector:** el informe (los `.qmd`) lee *únicamente* de
 `ediciones/<edicion>/procesados/`. Todo lo que depende del año vive en datos y
 en `informe/_variables.yml`; todo lo que no, vive en funciones y plantillas.

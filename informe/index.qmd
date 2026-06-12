@@ -1,18 +1,12 @@
 # Presentación {.unnumbered}
 
-```{r}
-#| include: false
-source(here::here("R", "utilidades.R"))
-source(here::here("R", "theme_gem.R"))
-cfg <- leer_config()
-```
+Informe GEM Extremadura, edición **{{< var edicion >}}**. Monográfico:
+*{{< var monografico >}}*.
 
-Informe GEM Extremadura, edición **{{< var edicion >}}**, con monográfico
-dedicado a *{{< var monografico >}}*.
+## Carta de la Dirección Ejecutiva del Proyecto GEM Extremadura {.unnumbered}
 
-<!-- Pegar aquí el texto de presentación entregado (prólogo, agradecimientos,
-     equipo investigador, patrocinadores). -->
+<!-- Texto de la carta de la edición. -->
 
-## Resumen ejecutivo {.unnumbered}
+## Prólogo {.unnumbered}
 
-<!-- Texto del resumen ejecutivo de la edición. -->
+<!-- Prólogo institucional (en 2023/24 lo firmó la Presidencia de la Junta). -->

@@ -1,0 +1,13 @@
+# Introducción {.unnumbered}
+
+## El Proyecto GEM {.unnumbered}
+
+<!-- Qué es el GEM, la red internacional, el equipo GEM Extremadura y los
+     patrocinadores. Incluir aquí la figura del marco teórico GEM revisado
+     (en el informe España es la Figura 1), exportada a
+     ../ediciones/<edicion>/recursos/. -->
+
+## Metodología GEM {.unnumbered}
+
+<!-- Fichas técnicas APS y NES de la edición: universo, muestra, error
+     muestral, trabajo de campo. -->

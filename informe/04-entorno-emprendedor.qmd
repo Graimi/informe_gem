@@ -1,0 +1,23 @@
+# El entorno emprendedor en Extremadura
+
+```{r}
+#| include: false
+library(tidyverse)
+source(here::here("R", "utilidades.R"))
+source(here::here("R", "theme_gem.R"))
+cfg <- leer_config()
+```
+
+<!-- Capítulo basado en la encuesta a expertos (NES). -->
+
+## Valoración de las condiciones del entorno para emprender en Extremadura
+
+<!-- Indicador esperado: nes_condiciones.csv con columnas
+     condicion, ambito, puntuacion. Gráfico habitual: barras horizontales
+     comparando Extremadura con España. -->
+
+## Análisis de los apoyos y recomendaciones a la actividad emprendedora en Extremadura
+
+<!-- Obstáculos, apoyos y recomendaciones citados por el panel de expertos. -->
+
+## Benchmarking internacional y por comunidades autónomas sobre las condiciones del entorno

@@ -10,10 +10,17 @@ book:
   cover-image: "../ediciones/{{< var edicion >}}/recursos/portada.png"
   chapters:
     - index.qmd
-    - 01-actividad-emprendedora.qmd
-    - 02-perfil-emprendedor.qmd
-    - 03-contexto-emprendimiento.qmd
-    - 04-monografico.qmd
+    - resumen-ejecutivo.qmd
+    - introduccion.qmd
+    - cuadro-indicadores.qmd
+    - 01-valores-percepciones.qmd
+    - 02-actividad-emprendedora.qmd
+    - 03-aspiraciones.qmd
+    - 04-entorno-emprendedor.qmd
+    - 05-conclusiones.qmd
+  appendices:
+    - 90-bibliografia.qmd
+    - 91-anexos.qmd
 
 lang: es
 
@@ -33,3 +40,5 @@ format:
     mainfont: "Liberation Sans"
     fontsize: 10.5pt
     toc: true
+    include-in-header:
+      - estilo-gem.typ

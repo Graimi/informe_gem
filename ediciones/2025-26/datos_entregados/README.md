@@ -15,11 +15,17 @@ El informe no lee de esta carpeta: cada tabla o serie se vuelca a un CSV en
 
 ## Indicadores que esperan los capítulos
 
-| CSV                 | Columnas                       | Usado en capítulo            |
-|---------------------|--------------------------------|------------------------------|
-| `serie_tea.csv`     | `anio`, `ambito`, `tea`        | 01 Actividad emprendedora    |
-| `perfil_edad.csv`   | `grupo_edad`, `ambito`, `pct`  | 02 Perfil del emprendedor    |
-| `nes_condiciones.csv` | `condicion`, `ambito`, `puntuacion` | 03 Contexto            |
+| CSV                       | Columnas                                  | Usado en                                |
+|---------------------------|-------------------------------------------|-----------------------------------------|
+| `cuadro_indicadores.csv`  | `bloque`, `indicador`, `anio`, `valor`    | Cuadro sintético de indicadores         |
+| `percepciones.csv`        | `indicador`, `colectivo`, `anio`, `pct`   | Cap. 1 Valores y percepciones           |
+| `serie_tea.csv`           | `anio`, `ambito`, `tea`                   | Cap. 2 Actividad emprendedora           |
+| `proceso_emprendedor.csv` | `fase`, `anio`, `pct`                     | Cap. 2 Proceso emprendedor              |
+| `perfil_emprendedor.csv`  | `caracteristica`, `categoria`, `fase`, `pct` | Cap. 2 Perfil                        |
+| `nes_condiciones.csv`     | `condicion`, `ambito`, `puntuacion`       | Cap. 4 Entorno emprendedor              |
+
+Hay CSV de plantilla en `../procesados/` con valores `0.0`: son marcadores de
+posición para que el informe renderice; sustituir por los datos reales.
 
 Amplía esta tabla a medida que se añadan indicadores a los capítulos: es el
 contrato entre los datos y el informe.

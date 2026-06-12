@@ -1,0 +1,5 @@
+# Bibliografía {.unnumbered}
+
+<!-- Referencias citadas. Si se prefiere gestión automática, crear
+     referencias.bib y declarar `bibliography: referencias.bib` en
+     _quarto.yml; las citas en el texto se escriben como [@clave]. -->
