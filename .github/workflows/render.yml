@@ -1,0 +1,56 @@
+name: Renderizar informe GEM
+
+# Renderiza el informe en cada push a la rama de trabajo y en cada PR, y
+# publica el PDF + HTML como artefacto descargable. Garantiza que el documento
+# siempre compila desde los datos versionados, sin depender de la máquina de
+# nadie.
+
+on:
+  push:
+    branches:
+      - main
+      - "claude/**"
+    paths:
+      - "informe/**"
+      - "R/**"
+      - "ediciones/**/procesados/**"
+      - ".github/workflows/**"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Instalar R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      # Restaura el lockfile si existe (renv); si no, instala el conjunto
+      # mínimo necesario para renderizar la plantilla.
+      - name: Instalar dependencias de R
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: >-
+            ggplot2 dplyr tidyr readr gt yaml here
+
+      - name: Renderizar informe
+        working-directory: informe
+        run: quarto render
+
+      - name: Publicar artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-gem-extremadura
+          path: informe/_book/
+          if-no-files-found: error
