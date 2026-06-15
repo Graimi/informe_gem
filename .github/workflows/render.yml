@@ -1,9 +1,9 @@
 name: Renderizar informe GEM
 
-# Renderiza el informe en cada push a la rama de trabajo y en cada PR, y
-# publica el PDF + HTML como artefacto descargable. Garantiza que el documento
-# siempre compila desde los datos versionados, sin depender de la máquina de
-# nadie.
+# Renderiza el informe (HTML + PDF Typst) en cada push a la rama de trabajo y
+# en cada PR, y publica las salidas como artefacto descargable. Garantiza que
+# el documento siempre compila desde los datos versionados, sin depender de la
+# máquina de nadie.
 
 on:
   push:
@@ -28,6 +28,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Liberation Sans es la fuente del informe (mainfont en _quarto.yml);
+      # sin ella Typst usaría una alternativa y la maquetación cambiaría.
+      - name: Instalar fuentes
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-liberation
+
       - name: Instalar Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
@@ -37,12 +42,12 @@ jobs:
           use-public-rspm: true
 
       # Restaura el lockfile si existe (renv); si no, instala el conjunto
-      # mínimo necesario para renderizar la plantilla.
+      # mínimo necesario para renderizar.
       - name: Instalar dependencias de R
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: >-
-            ggplot2 dplyr tidyr readr gt yaml here
+            ggplot2 dplyr tidyr readr gt yaml rprojroot
 
       - name: Renderizar informe
         working-directory: informe

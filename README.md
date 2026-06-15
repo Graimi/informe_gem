@@ -16,8 +16,17 @@ informe_gem/
 │       └── recursos/           # portada, logos de la edición
 ├── R/                          # funciones reutilizables (tema gráfico, lectura de datos)
 ├── scripts/                    # procesamiento de microdatos (solo modo B)
-└── informe/                    # capítulos Quarto (.qmd) y configuración del libro
+├── informe/                    # fuentes Quarto del informe
+│   ├── informe.qmd             # documento maestro: ensambla los capítulos
+│   ├── _NN-*.qmd               # capítulos (prefijo _: solo se incluyen, no se renderizan sueltos)
+│   ├── _variables.yml          # configuración de la edición (única fuente de verdad)
+│   ├── _quarto.yml             # formatos de salida (HTML + PDF Typst)
+│   └── estilo-gem.typ          # estilo de maquetación PDF
+└── .gem_root                   # marcador de la raíz del proyecto (lo usa R/utilidades.R)
 ```
+
+Para reordenar, añadir o quitar capítulos se edita la lista de `{{< include >}}`
+de `informe/informe.qmd`.
 
 Los capítulos siguen la estructura del informe GEM Extremadura (presentación,
 resumen ejecutivo ES/EN, introducción y metodología, cuadro sintético de
@@ -64,13 +73,25 @@ en `informe/_variables.yml`; todo lo que no, vive en funciones y plantillas.
 
 ## Renderizar
 
-Requisitos: [Quarto](https://quarto.org) ≥ 1.4 y R ≥ 4.3 con los paquetes
-`tidyverse`, `gt`, `yaml`, `here` (y `haven`, `srvyr` para el modo B).
+Requisitos: [Quarto](https://quarto.org) ≥ 1.4 (trae Typst incorporado, no hace
+falta LaTeX), la fuente Liberation Sans (`fonts-liberation` en Debian/Ubuntu) y
+R ≥ 4.3 con los paquetes `ggplot2`, `dplyr`, `tidyr`, `readr`, `gt`, `yaml`,
+`rprojroot` (y `haven`, `srvyr` para el modo B).
 
 ```sh
 cd informe
-quarto render            # genera PDF (Typst) y HTML en informe/_book/
+quarto render            # genera _book/informe.html y _book/informe.pdf
 ```
+
+El render está validado: produce el HTML y el PDF maquetado (estilo GEM España)
+a partir de los CSV de `procesados/`.
+
+> En contenedores con el *locale* en C puede hacer falta `export LANG=C.UTF-8`
+> antes de renderizar para que los acentos se lean bien (el código ya fuerza
+> lectura UTF-8 del YAML, pero conviene para el resto del pipeline).
+
+**Integración continua:** `.github/workflows/render.yml` renderiza el informe en
+cada push y PR y publica `informe/_book/` como artefacto descargable.
 
 Primera vez en una máquina nueva: `Rscript -e 'renv::restore()'` si existe
 `renv.lock`. Para crearlo/actualizarlo tras instalar paquetes:

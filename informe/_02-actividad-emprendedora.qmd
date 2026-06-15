@@ -2,23 +2,30 @@
 
 ```{r}
 #| include: false
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
 library(gt)
-source(here::here("R", "utilidades.R"))
-source(here::here("R", "theme_gem.R"))
+source(rprojroot::find_root_file("R", "utilidades.R", criterion = rprojroot::has_file(".gem_root")))
+source(ruta_R("theme_gem.R"))
 cfg <- leer_config()
 ```
 
 <!-- Texto interpretativo de la edición. Las cifras citadas en el texto pueden
-     insertarse en línea para que se actualicen solas, p. ej.: "la TEA
-     extremeña se situó en el
-     `r fmt_pct(leer_indicador("serie_tea") |> filter(anio == cfg$anio_campo, ambito == "Extremadura") |> pull(tea))`". -->
+     insertarse con código R en línea para que se actualicen solas. Patrón
+     (escribir entre acentos graves precedido de la letra r, sin los espacios):
+       la TEA extremeña se situó en el
+       [ r fmt_pct(leer_indicador("serie_tea") |>
+            filter(anio == cfg$anio_campo, ambito == "Extremadura") |>
+            pull(tea)) ]
+     Sustituir los corchetes por acentos graves al usarlo en el texto real. -->
 
 ## Actividad emprendedora general
 
 ```{r}
 #| label: fig-serie-tea
-#| fig-cap: !expr paste0("Evolución de la TEA, Extremadura y España (", cfg$anio_campo - 4, "–", cfg$anio_campo, "). Fuente: GEM.")
+#| fig-cap: !expr 'paste0("Evolución de la TEA, Extremadura y España (", cfg$anio_campo - 4, "–", cfg$anio_campo, "). Fuente: GEM.")'
 serie_tea <- leer_indicador("serie_tea")
 
 ggplot(serie_tea, aes(anio, tea, colour = ambito)) +

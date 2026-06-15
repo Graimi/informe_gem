@@ -1,0 +1,34 @@
+---
+title: "Informe GEM Extremadura"
+subtitle: "{{< var monografico >}}"
+author: "{{< var equipo >}}"
+date: today
+date-format: "YYYY"
+---
+
+<!-- Documento maestro: ensambla los capítulos (ficheros _*.qmd, que no se
+     renderizan sueltos) en un único informe. El orden de los include define
+     el orden del informe; para reordenar o añadir capítulos, edita solo esta
+     lista. -->
+
+{{< include _index.qmd >}}
+
+{{< include _resumen-ejecutivo.qmd >}}
+
+{{< include _introduccion.qmd >}}
+
+{{< include _cuadro-indicadores.qmd >}}
+
+{{< include _01-valores-percepciones.qmd >}}
+
+{{< include _02-actividad-emprendedora.qmd >}}
+
+{{< include _03-aspiraciones.qmd >}}
+
+{{< include _04-entorno-emprendedor.qmd >}}
+
+{{< include _05-conclusiones.qmd >}}
+
+{{< include _90-bibliografia.qmd >}}
+
+{{< include _91-anexos.qmd >}}

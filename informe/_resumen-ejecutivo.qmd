@@ -5,8 +5,9 @@
      - Actividad emprendedora y sus características
      - Aspiraciones de la actividad emprendedora
      - El entorno emprendedor en Extremadura
-     Las cifras citadas pueden insertarse en línea con `r ...` para que se
-     actualicen solas al cambiar los CSV (ver patrón en el capítulo 2). -->
+     Las cifras citadas pueden insertarse en línea con código R en línea para
+     que se actualicen solas al cambiar los CSV (ver el patrón documentado al
+     inicio del capítulo 2, Actividad emprendedora). -->
 
 ## Executive summary {.unnumbered}
 

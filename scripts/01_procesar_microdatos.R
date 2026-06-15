@@ -11,7 +11,7 @@ library(dplyr)
 library(haven)
 library(srvyr)
 
-source(here::here("R", "utilidades.R"))
+source(rprojroot::find_root_file("R", "utilidades.R", criterion = rprojroot::has_file(".gem_root")))
 
 cfg <- leer_config()
 dir_micro <- ruta_edicion("microdatos")

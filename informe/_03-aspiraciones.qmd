@@ -2,9 +2,12 @@
 
 ```{r}
 #| include: false
-library(tidyverse)
-source(here::here("R", "utilidades.R"))
-source(here::here("R", "theme_gem.R"))
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+source(rprojroot::find_root_file("R", "utilidades.R", criterion = rprojroot::has_file(".gem_root")))
+source(ruta_R("theme_gem.R"))
 cfg <- leer_config()
 ```
 
