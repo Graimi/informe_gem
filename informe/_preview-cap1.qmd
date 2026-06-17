@@ -1,0 +1,20 @@
+---
+title: "GEM Extremadura — vista previa"
+subtitle: "Capítulo 1. Contexto emprendedor"
+author: "Equipo GEM Extremadura"
+date: today
+date-format: "YYYY"
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  typst:
+    mainfont: "Arial"
+    fontsize: 10.5pt
+    toc: false
+    include-in-header:
+      - estilo-gem.typ
+---
+
+{{< include _01-contexto-emprendedor.qmd >}}

@@ -1,0 +1,410 @@
+# Contexto emprendedor
+
+```{r}
+#| include: false
+library(ggplot2); library(dplyr); library(tidyr); library(readr)
+source(rprojroot::find_root_file("R", "utilidades.R", criterion = rprojroot::has_file(".gem_root")))
+source(ruta_R("theme_gem.R"))
+source(ruta_R("graficos_cap1.R"))
+cfg <- leer_config()
+```
+
+El presente capítulo analiza el contexto emprendedor de Extremadura durante 2025 desde dos perspectivas complementarias. En primer lugar, se examinan las percepciones, valores y actitudes de la población adulta extremeña sobre el emprendimiento, a partir de la Encuesta a la Población Adulta (APS) del proyecto GEM. En segundo lugar, se recoge la valoración cualificada de los expertos consultados (NES) sobre las condiciones del entorno emprendedor en la región. Ambos enfoques permiten dibujar un retrato robusto del clima emprendedor regional, situarlo en relación con la media española y europea, y observar las diferencias entre las provincias de Badajoz y Cáceres. La pertinencia de este doble enfoque está bien establecida en la literatura: las percepciones y actitudes individuales explican una parte sustancial de la variación en la actividad emprendedora entre territorios (Arenius y Minniti, 2005; Bosma et al., 2020), mientras que las condiciones del entorno valoradas por expertos constituyen el marco institucional sobre el que se materializa esa actividad (Reynolds et al., 2005; Stenholm et al., 2013).
+
+Los datos correspondientes a 2025 muestran una mejora generalizada de las percepciones de la población extremeña respecto al ejercicio anterior, aunque persisten brechas significativas frente a la media española y, sobre todo, europea. La valoración de los expertos, en cambio, refleja un entorno que sigue siendo exigente: las puntuaciones en condiciones estructurales como la educación emprendedora, las normas sociales o la financiación se mantienen en la mitad inferior de la escala 0-10, mientras que los programas gubernamentales e infraestructuras de apoyo registran los valores más altos del conjunto.
+
+::: {.callout-note icon=false title="Extremadura 2025 · el contexto emprendedor en cifras"}
+- **Oportunidades percibidas:** 35,4 % (+8,3 pp respecto a 2024)
+- **Habilidades para emprender:** 53,7 % (iguala a España, supera a la UE)
+- **Miedo al fracaso:** 54,3 % (principal freno percibido)
+- **Conoce a un emprendedor reciente:** 56,2 %
+- **Entorno (NES):** 8 de 13 condiciones por debajo de 5/10 · mejor valorada: programas gubernamentales (6,6) · peor: educación escolar (2,8)
+:::
+
+## ¿Qué percibe la población?
+
+La encuesta a la población adulta (APS) del proyecto GEM permite aproximarse a cómo perciben los extremeños el entorno para emprender. Se analizan ocho indicadores clave referidos a oportunidades, habilidades, miedo al fracaso, conocimiento de otros emprendedores, valoración social del emprendimiento, presencia mediática y facilidad para iniciar un negocio. Estos indicadores recogen el componente cognitivo y motivacional del proceso emprendedor (Krueger et al., 2000) y han demostrado ser predictores robustos de la intención y de la actividad emprendedora posterior en estudios longitudinales (Liñán y Chen, 2009). Los resultados se contrastan con el ejercicio anterior, con la media de España y de Europa, y entre las dos provincias de la comunidad.
+
+En conjunto, 2025 refleja una evolución favorable del clima emprendedor percibido en Extremadura respecto al ejercicio anterior. Los ocho indicadores analizados mejoran sus registros, con avances especialmente destacados en la percepción de oportunidades, la visibilidad mediática del emprendimiento y el reconocimiento social del éxito empresarial. A pesar de esta evolución positiva, la región continúa situándose por debajo de la media española y, especialmente, de la europea en buena parte de las dimensiones analizadas. Además, persiste un nivel elevado de miedo al fracaso, que sigue actuando como uno de los principales frenos a la iniciativa emprendedora.
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+g_barras_anio("percepciones_anio.csv",
+  "Gráfico 1.1. Percepción de la población para emprender en Extremadura (2024-2025)",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La comparación entre 2024 y 2025 confirma una mejora transversal de la percepción de la población extremeña sobre el entorno emprendedor. Los ocho indicadores analizados crecen respecto al ejercicio anterior, lo que sitúa a 2025 como el año con mejores valores de la serie reciente. Destacan los avances en el reconocimiento del estatus social del éxito empresarial, que pasa del 49,5 % al 58,6 %, y en la difusión del emprendimiento en los medios de comunicación, que sube del 37,3 % al 48,1 %.
+
+La percepción de oportunidades para emprender en los próximos seis meses crece más de ocho puntos porcentuales (del 27,1 % al 35,4 %), y la autopercepción de conocimientos y habilidades para emprender alcanza el 53,7 %, frente al 47,1 % del año anterior. La consideración del emprendimiento como buena opción profesional sube hasta el 45,6 % (frente al 39,1 %), y el indicador de facilidad para iniciar un negocio mejora ligeramente, situándose en el 29,4 %. El único indicador que evoluciona en sentido negativo desde el punto de vista emprendedor es el miedo al fracaso, que aumenta del 50,1 % al 54,3 %, en línea con la tendencia observada en otros indicadores cuando crece la atención social hacia el emprendimiento.
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.2
+g_barras_ambito("percepciones_benchmark.csv", c("Extremadura", "España", "Unión Europea"),
+  "Gráfico 1.2. Percepción del contexto emprendedor: Extremadura, España y Europa",
+  "Fuente: GEM Global / GEM Extremadura, APS 2025.")
+```
+
+La comparación con España y la media europea sitúa a Extremadura en una posición intermedia, con avances en algunos indicadores y rezagos persistentes en otros. La autopercepción de conocimientos y habilidades para emprender es el único indicador en el que Extremadura iguala plenamente a España (ambos en el 53,7 %) y supera incluso a la media europea (51,9 %), lo que indica un nivel de capacitación percibida en línea con el resto del país.
+
+En el resto de dimensiones, sin embargo, Extremadura se mantiene por debajo de la media española y, en mayor medida, de la europea. La brecha más relevante se observa en la percepción de oportunidades (35,4 % frente al 41,9 % de España y el 50,0 % de Europa) y en la facilidad para iniciar un negocio (29,4 % frente al 37,0 % de España y el 51,8 % de Europa). La valoración cultural del emprendimiento también es más baja: el reconocimiento del estatus social del éxito empresarial es del 58,6 % en Extremadura, frente al 64,9 % en España y al 72,6 % en Europa, y la consideración del emprendimiento como buena opción profesional alcanza el 45,6 %, lejos del 60,6 % europeo.
+
+Por último, Extremadura presenta una mayor incidencia del miedo al fracaso (54,3 %) que España (53,0 %) y, sobre todo, que la media europea (49,6 %). Esta combinación, mayor aversión al riesgo y menor percepción de oportunidades, ayuda a entender el menor dinamismo de la actividad emprendedora regional respecto a los entornos de referencia, pese a los avances registrados en 2025.
+
+::: {.callout-tip icon=false title="Idea clave"}
+Extremadura solo iguala a España —y supera a Europa— en la **autopercepción de habilidades**. En oportunidades y, sobre todo, en facilidad para iniciar un negocio, la brecha con la media europea supera los 15 puntos porcentuales.
+:::
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.2
+g_barras_ambito("percepciones_provincias.csv", c("Extremadura", "Cáceres", "Badajoz"),
+  "Gráfico 1.3. Percepción del contexto emprendedor por provincias",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La lectura provincial revela una región emprendedora razonablemente homogénea, con diferencias notables solo en dimensiones puntuales. Badajoz muestra una percepción algo más optimista en oportunidades (36,4 % frente al 33,7 % de Cáceres), en la consideración del emprendimiento como buena opción profesional (45,3 % frente al 46,2 %) y, sobre todo, en la facilidad para iniciar un negocio (30,6 % frente al 27,4 %). También presenta una autopercepción de habilidades más alta (55,3 % frente al 50,8 %) y una mayor difusión percibida del emprendimiento en los medios de comunicación (49,1 % frente al 46,4 %).
+
+Cáceres, por su parte, destaca en los indicadores de capital social y cultural del emprendimiento: el 57,7 % de su población conoce a alguien que ha puesto en marcha una empresa en los dos últimos años (frente al 53,5 % en Badajoz) y el 61,4 % considera que triunfar con una empresa proporciona un buen estatus social (frente al 57,0 % en Badajoz). Estos datos sugieren que el ecosistema cacereño es más visible y reconocido socialmente, aunque la población badajocense percibe mejores condiciones objetivas para emprender.
+
+La diferencia más significativa entre ambas provincias es el miedo al fracaso, claramente superior en Badajoz (56,3 %) que en Cáceres (50,7 %). Esta brecha de casi seis puntos modula el optimismo badajocense en oportunidades y facilidad, y matiza la lectura conjunta: mientras Cáceres exhibe una percepción más serena pero menos dinámica, Badajoz combina mayor expectativa con mayor aversión al riesgo.
+
+### Modelos de referencia
+
+La presencia de modelos de referencia —personas conocidas que han puesto en marcha una empresa en los dos últimos años— es uno de los predictores más sólidos del paso a la acción emprendedora. El conocimiento de otros emprendedores opera como mecanismo de aprendizaje vicario en la teoría sociocognitiva (Bandura, 1986), facilita el acceso a información, recursos y legitimidad a través de redes sociales (Aldrich y Zimmer, 1986; Stuart y Sorenson, 2005) y se ha asociado de forma consistente con un aumento de la probabilidad de emprender entre la población adulta (Bosma et al., 2012; Davidsson y Honig, 2003). En 2025, el 56,2 % de la población adulta de Extremadura declara conocer a algún emprendedor reciente, un porcentaje en línea con la media europea (54,7 %) aunque por debajo del dato español (60,4 %).
+
+::: {.callout-note appearance="simple"}
+**Figura 1.1.** Percepción de los modelos de referencia para emprender en España. *(Figura del informe original; imagen en `ediciones/2025-26/recursos/figuras_docx/`.)*
+:::
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Modelos de referencia",
+  "Gráfico 1.4. Evolución de la percepción de modelos de referencia (2015-2025)",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La serie histórica confirma una tendencia ascendente sostenida desde 2020. Entre la población no involucrada en actividades emprendedoras, el porcentaje que declara conocer a un emprendedor reciente ha pasado del 38,2 % en 2020 al 53,8 % en 2025, con un incremento especialmente marcado en los dos últimos años. Entre la población involucrada en iniciativas emprendedoras, los niveles son lógicamente más altos y también crecientes, del 65,1 % en 2020 al 70,4 % en 2025. La reducción progresiva de la distancia entre ambos colectivos sugiere una mayor difusión social del emprendimiento en Extremadura, más allá del círculo de quienes participan directamente en actividades emprendedoras. Este proceso apunta a una creciente normalización del emprendimiento dentro del entorno social cotidiano y refuerza su visibilidad como opción profesional reconocible para la población general.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.6
+g_genero("percepciones_genero.csv", "Modelos de referencia",
+  "Gráfico 1.5. Modelos de referencia por género",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+El análisis por género muestra una diferencia moderada pero consistente. El 57,5 % de los hombres declara conocer a alguien que ha emprendido recientemente, frente al 54,9 % de las mujeres. La brecha es más estrecha entre la población involucrada en actividades emprendedoras (74,1 % de hombres y 66,7 % de mujeres) que en el conjunto, lo que indica que el acceso a redes de modelos emprendedores está algo más limitado para las mujeres extremeñas, especialmente fuera de los entornos donde el emprendimiento ya está presente.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.2
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Modelos de referencia",
+  "Gráfico 1.6. Modelos de referencia por provincias",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+Por provincias, Cáceres presenta una percepción más alta (57,7 %) que Badajoz (53,5 %) en cuanto al conocimiento de emprendedores recientes. La diferencia, de algo más de cuatro puntos, es coherente con el mayor reconocimiento del estatus social del éxito empresarial observado en Cáceres (61,4 % frente al 57,0 % de Badajoz) y apunta a un ecosistema cacereño con mayor visibilidad de los referentes emprendedores en el entorno cercano.
+
+### Oportunidades para emprender
+
+La identificación de oportunidades es el punto de partida del proceso emprendedor (Shane y Venkataraman, 2000) y, junto con la autoeficacia, uno de los mediadores más estables entre las condiciones del entorno y la decisión de emprender (Arenius y Minniti, 2005). La percepción de oportunidades para emprender en los próximos seis meses ha sido históricamente uno de los indicadores con mayor recorrido al alza en Extremadura. En 2025, el 35,4 % de la población adulta considera que existen buenas oportunidades para emprender en su entorno, una cifra notablemente mejor que la de 2024 (27,1 %) pero todavía por debajo de la media española (41,9 %) y, sobre todo, de la europea (50,0 %).
+
+::: {.callout-note appearance="simple"}
+**Figura 1.2.** Percepción de las oportunidades para emprender en España. *(Figura del informe original.)*
+:::
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Oportunidades",
+  "Gráfico 1.7. Evolución de la percepción de oportunidades (2015-2025)",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La evolución reciente muestra un avance claro respecto a los mínimos provocados por la crisis sanitaria. Entre la población no involucrada en actividades emprendedoras, la percepción de buenas oportunidades ha pasado del 17,2 % en 2020 al 34,4 % en 2025, prácticamente duplicándose en cinco años. Entre la población involucrada, la mejora ha sido aún más marcada, del 17,9 % al 41,2 %. Es destacable que en 2025 ambos colectivos vuelven a estar claramente alineados con la tendencia ascendente iniciada en 2021, tras un repunte del miedo y un retroceso transitorio en 2022 y 2024.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.6
+g_genero("percepciones_genero.csv", "Oportunidades",
+  "Gráfico 1.8. Percepción de oportunidades por género",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La diferencia por género es relevante: el 38,7 % de los hombres percibe buenas oportunidades para emprender frente al 32,1 % de las mujeres, una brecha de 6,6 puntos. Esta diferencia se mantiene tanto entre la población involucrada (47,1 % de hombres frente al 40,7 % de mujeres) como entre la no involucrada (38,1 % frente al 30,5 %), lo que indica un sesgo de género consistente en la lectura del entorno emprendedor.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.2
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Oportunidades",
+  "Gráfico 1.9. Percepción de oportunidades por provincias",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+Por provincias, Badajoz registra una percepción de oportunidades algo más alta (36,4 %) que Cáceres (33,7 %). La diferencia, aunque modesta, se concentra en la población no involucrada (35,8 % en Badajoz frente al 31,9 % en Cáceres), mientras que entre la población involucrada es Cáceres la que destaca (45,0 % frente al 39,3 % de Badajoz). El contraste sugiere que en Cáceres quienes ya están vinculados al emprendimiento perciben con más nitidez las oportunidades del entorno, mientras que en Badajoz la lectura optimista está más extendida en el conjunto de la población.
+
+### Habilidades para emprender
+
+La autopercepción de los conocimientos, habilidades y experiencia necesarios para emprender es uno de los indicadores en los que Extremadura presenta una posición más favorable. Esta dimensión se corresponde conceptualmente con la noción de autoeficacia emprendedora (Chen et al., 1998; Krueger et al., 2000), reconocida como uno de los predictores cognitivos más sólidos del paso a la acción y mediador clave de la brecha de género en la actividad emprendedora (Wilson et al., 2007). En 2025, el 53,7 % de la población adulta declara contar con las capacidades necesarias para poner en marcha un negocio, una cifra que iguala a la media española (53,7 %) y supera a la europea (51,9 %), y que mejora sensiblemente el dato regional de 2024 (47,1 %).
+
+::: {.callout-note appearance="simple"}
+**Figura 1.3.** Percepción de las habilidades para emprender en España. *(Figura del informe original.)*
+:::
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Habilidades",
+  "Gráfico 1.10. Evolución de la percepción de habilidades (2015-2025)",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La serie histórica revela una asimetría persistente entre quienes ya están involucrados en actividades emprendedoras y el resto de la población. Entre los primeros, la autopercepción de habilidades se ha mantenido en niveles muy altos (en torno al 80-85 %) durante todo el periodo reciente, con un 79,6 % en 2025. Entre la población no involucrada, los valores son significativamente más bajos pero muestran una recuperación clara en 2025 (49,1 %), tras varios años de descenso desde el 53,1 % de 2020 hasta el 42,5 % de 2024.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.6
+g_genero("percepciones_genero.csv", "Habilidades",
+  "Gráfico 1.11. Percepción de habilidades por género",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La brecha de género en la autopercepción de habilidades emprendedoras es la más amplia de los cuatro indicadores analizados. El 57,6 % de los hombres se considera capacitado para emprender, frente al 49,7 % de las mujeres, una diferencia de casi ocho puntos. La distancia se reproduce en ambos colectivos: entre la población involucrada (82,2 % de hombres frente al 76,8 % de mujeres) y, de forma más acusada, entre la no involucrada (53,2 % frente al 45,0 %).
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.2
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Habilidades",
+  "Gráfico 1.12. Percepción de habilidades por provincias",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La comparación provincial muestra a Badajoz ligeramente por delante de Cáceres tanto en la autopercepción global de habilidades (55,3 % frente al 50,8 %) como en cada uno de los colectivos analizados: 80,1 % frente a 78,6 % entre la población involucrada y 50,7 % frente a 46,3 % entre la no involucrada. La diferencia, de unos cuatro puntos en el conjunto, es coherente con la mayor presencia relativa de actividad emprendedora consolidada en la provincia pacense.
+
+### Miedo al fracaso
+
+El miedo al fracaso es un freno significativo al paso a la acción emprendedora y opera como un filtro afectivo entre la identificación de oportunidades y la decisión de explotarlas (Cacciotti et al., 2016; Wennekers et al., 2007). Su efecto es especialmente acusado entre quienes ya perciben oportunidades, y se ha asociado a niveles más bajos de actividad emprendedora temprana en estudios comparados internacionales (Arenius y Minniti, 2005). En 2025, el 54,3 % de la población extremeña que percibe oportunidades para emprender declara que el miedo a fracasar le impediría hacerlo, un dato ligeramente superior al de España (53,0 %) y a la media europea (49,6 %), y que crece respecto al 50,1 % registrado en 2024.
+
+::: {.callout-note appearance="simple"}
+**Figura 1.4.** Percepción del miedo al fracaso para emprender en España. *(Figura del informe original.)*
+:::
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Miedo al fracaso",
+  "Gráfico 1.13. Evolución de la percepción del miedo al fracaso (2015-2025)",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La serie histórica muestra una evolución diferenciada entre colectivos. Entre la población no involucrada en actividades emprendedoras, el miedo al fracaso se ha reducido notablemente desde el 70,0 % de 2020 al 52,5 % de 2024, aunque en 2025 repunta hasta el 57,1 %. Entre la población involucrada, el descenso fue más pronunciado, del 52,7 % en 2020 al 31,3 % en 2024, también con un ligero repunte en 2025 (37,7 %). El repunte simultáneo en ambos colectivos sugiere un aumento de la prudencia ante un contexto económico que la población percibe con más incertidumbre que un año atrás.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.6
+g_genero("percepciones_genero.csv", "Miedo al fracaso",
+  "Gráfico 1.14. Percepción del miedo al fracaso por género",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+La brecha de género en el miedo al fracaso es relevante y opera en sentido inverso al de las habilidades: las mujeres extremeñas declaran un nivel de miedo al fracaso mayor que los hombres en ambos colectivos analizados. Entre la población involucrada en actividades emprendedoras, el miedo afecta al 41,2 % de las mujeres frente al 34,1 % de los hombres; entre la no involucrada, los porcentajes son del 62,7 % y del 51,7 % respectivamente. La combinación de menor autopercepción de habilidades y mayor sensación de riesgo personal entre las mujeres ayuda a explicar buena parte de la brecha de género en las tasas de actividad emprendedora regional, en línea con la evidencia internacional que identifica la autoeficacia y la aversión al fracaso como los principales mediadores de esa brecha (Wilson et al., 2007; Verheul et al., 2012).
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.2
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Miedo al fracaso",
+  "Gráfico 1.15. Percepción del miedo al fracaso por provincias",
+  "Fuente: GEM Extremadura, APS 2025.")
+```
+
+Por provincias, el contraste es muy marcado. Badajoz presenta un nivel de miedo al fracaso significativamente más alto (56,3 %) que Cáceres (50,7 %). La diferencia se explica sobre todo por la población involucrada: el 42,7 % de los emprendedores pacenses declara miedo al fracaso, frente a solo el 27,8 % de los cacereños. Entre la población no involucrada, los datos son más próximos (58,8 % en Badajoz y 53,4 % en Cáceres). Este resultado sitúa a Cáceres como el entorno con menor aversión al riesgo de la región, lo que es coherente con su mayor visibilidad de modelos emprendedores y mejor valoración del estatus social del éxito empresarial.
+
+## ¿Qué perciben los expertos?
+
+La encuesta a personas expertas (National Expert Survey, NES) recoge la valoración cualificada de profesionales con conocimiento directo del ecosistema emprendedor extremeño sobre las trece condiciones del entorno que el proyecto GEM considera determinantes para la actividad emprendedora. Las valoraciones se expresan en una escala de 0 a 10, donde valores por debajo de 5 indican una condición percibida como deficitaria. El marco de las trece condiciones del entorno (Entrepreneurial Framework Conditions, EFC) constituye el modelo institucional de referencia del proyecto GEM (Reynolds et al., 2005; Bosma et al., 2020) y se inscribe en la tradición que vincula la actividad emprendedora con la calidad del marco institucional formal e informal (North, 1990; Acs et al., 2014).
+
+En 2025, ocho de las trece condiciones reciben en Extremadura una valoración inferior a 5, lo que sugiere que el ecosistema regional sigue presentando carencias estructurales relevantes. Las mejor valoradas son los programas gubernamentales de apoyo (6,6) y las infraestructuras físicas y de servicios (6,2); las peor valoradas, la educación y formación emprendedora en la etapa escolar (2,8), las normas sociales y culturales (3,8) y la financiación para emprendedores (3,9).
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.8
+g_barras_ambito("nes_benchmark.csv", c("Extremadura", "España", "Unión Europea"),
+  "Gráfico 1.16. Condiciones del entorno: Extremadura, España y UE",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10; línea punteada = umbral 5.",
+  col = "nes", campo_cat = "condicion")
+```
+
+La comparación con España y la Unión Europea revela una posición desigual de Extremadura. La región supera de forma muy destacada a ambos referentes en programas gubernamentales (6,6 frente a 5,1 en España y 4,9 en la UE) y en el acceso a infraestructura comercial y profesional (5,3 frente al 3,3 español y al 3,9 europeo), y también queda por encima en la educación y formación emprendedora en etapa postescolar (4,8 frente a 4,2 en ambos).
+
+Por el contrario, Extremadura presenta brechas negativas significativas frente a la UE en las condiciones más estructurales: educación escolar (2,8 frente a 3,4), normas sociales y culturales (3,8 frente a 4,6), financiación para emprendedores (3,9 frente a 4,7) e infraestructura física (6,2 frente a 6,5). Frente a España, la posición es más equilibrada e incluso favorable en la mayoría de dimensiones, salvo en políticas gubernamentales de apoyo (5,3 frente al 6,0 nacional) y en transferencia de I+D (4,8 frente al 5,1 español).
+
+```{r}
+#| fig-width: 11
+#| fig-height: 7
+g_nes_evolucion("nes_evolucion.csv",
+  "Gráfico 1.17. Evolución de las condiciones del entorno (2021-2025)",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+La evolución reciente muestra un panorama mixto. Respecto a 2024, varias condiciones mejoran ligeramente, entre ellas los programas gubernamentales (6,2 a 6,6), el acceso a infraestructura física (5,9 a 6,2) y la dinámica del mercado interno (4,5 a 4,8). Los principales retrocesos se observan en la financiación para emprendedores (4,2 a 3,9), la educación emprendedora en etapa escolar (3,0 a 2,8) y el acceso a infraestructura comercial y profesional (5,4 a 5,3).
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.8
+g_barras_ambito("nes_provincias.csv", c("Extremadura", "Badajoz", "Cáceres"),
+  "Gráfico 1.18. Condiciones del entorno por provincias",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10; línea punteada = umbral 5.",
+  col = "nes", campo_cat = "condicion")
+```
+
+El análisis por provincias muestra que Badajoz es la mejor valorada por las personas expertas en doce de las trece condiciones del entorno emprendedor, con diferencias especialmente marcadas en la facilidad de acceso a la financiación (5,3 frente a 3,7 en Cáceres), las barreras del mercado interno (4,8 frente a 3,8) y el acceso a infraestructura comercial y profesional (5,9 frente a 4,7). En normas sociales y culturales ambas provincias reciben idéntica valoración (3,8), y solo en educación escolar Cáceres queda por delante de Badajoz (2,6 frente a 3,0), aunque ambas con cifras críticas.
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.6
+g_nes_items("nes_items.csv", "Mujeres",
+  "Gráfico 1.19. Condiciones del entorno para mujeres emprendedoras",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+El bloque específico sobre condiciones del entorno para mujeres emprendedoras presenta una valoración media de 3,7 sobre 10, claramente en el terreno deficitario. La afirmación mejor valorada es que la cultura nacional alienta a hombres y mujeres por igual a trabajar por su cuenta (4,9), mientras que las peor valoradas son que las regulaciones y estímulos favorezcan que las mujeres prefieran emprender frente a ser asalariadas (2,6) y que la contratación pública sea más accesible para las mujeres (2,9). Los expertos identifican, por tanto, una cultura formalmente igualitaria pero un marco regulatorio y de acceso a recursos públicos que sigue percibiéndose como insuficiente para impulsar el emprendimiento femenino, en línea con los hallazgos de Brush et al. (2009) y Elam et al. (2019) sobre las barreras institucionales específicas que afectan a las emprendedoras.
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 6.2
+g_nes_items("nes_items.csv", "Sostenibilidad",
+  "Gráfico 1.20. Condiciones del entorno en sostenibilidad",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+Las condiciones del entorno vinculadas a la sostenibilidad obtienen la valoración media más alta del informe (5,4), con todas las afirmaciones del bloque por encima de 4,2. Los aspectos mejor valorados son que la mayoría de empresas nuevas y en crecimiento apliquen prácticas respetuosas con el medio ambiente (6,1), la existencia de ejemplos destacados vinculados a los Objetivos de Desarrollo Sostenible (6,0) y la priorización de prácticas de eficiencia energética (5,9). Los peor valorados son que las empresas consideren el pago de impuestos parte de su responsabilidad social (4,2) y el emprendimiento por parte de grupos minoritarios (4,8). El conjunto sugiere que la sostenibilidad ambiental se ha consolidado como un componente integrado del ecosistema emprendedor extremeño, fenómeno consistente con la creciente literatura sobre emprendimiento sostenible (Hall et al., 2010; Muñoz y Cohen, 2018).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 6
+g_nes_items("nes_items.csv", "Financiación",
+  "Gráfico 1.21. Condiciones del entorno: financiación",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+La financiación es una de las condiciones más críticas. La valoración media del bloque es de 4,1 sobre 10, con ocho de las doce afirmaciones por debajo del aprobado. Solo las subvenciones gubernamentales reciben una valoración claramente positiva (5,7), seguidas a distancia por la contratación de servicios financieros a coste razonable (4,9) y la financiación mediante deuda (4,8). Las dimensiones peor valoradas son la financiación a través de ofertas públicas iniciales (2,5), el capital propio o equity (3,4) y los prestamistas privados y plataformas alternativas (3,6). Los expertos dibujan, por tanto, un ecosistema financiero excesivamente dependiente del apoyo público y poco desarrollado en cuanto a instrumentos privados y de mercado, una configuración común en regiones europeas periféricas en las que la insuficiencia de capital privado limita el crecimiento de las empresas jóvenes (Cumming et al., 2019; Audretsch et al., 2020).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.6
+g_nes_items("nes_items.csv", "Políticas gubernamentales",
+  "Gráfico 1.22. Condiciones del entorno: políticas gubernamentales",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+El bloque general de políticas gubernamentales obtiene una valoración media de 4,8. La afirmación mejor valorada es que los emprendedores pueden registrar nuevas empresas a un coste razonable (6,2), seguida del apoyo a las empresas nuevas y en crecimiento como prioridad de los gobiernos locales (6,1). Las peor valoradas se refieren a la carga burocrática y fiscal: gestionar la burocracia, las regulaciones y los requisitos de licencia (3,8) y el peso de la carga fiscal (3,9). El contraste es revelador: las políticas se perciben como bien orientadas en lo estratégico, pero su implementación operativa sigue lastrada por la complejidad administrativa y la presión fiscal, un patrón ampliamente documentado en la literatura sobre eficacia de las políticas públicas de emprendimiento (Acs et al., 2014; Stenholm et al., 2013).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.2
+g_nes_items("nes_items.csv", "Programas de apoyo",
+  "Gráfico 1.23. Condiciones del entorno: programas de apoyo",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+Los programas específicos de apoyo al emprendimiento son la condición mejor valorada del informe, con una media de 6,7 sobre 10 y todas las afirmaciones por encima de 6. Los aspectos mejor evaluados son la existencia de incubadoras de empresas que proporcionan un apoyo eficaz (7,3) y los parques científicos y tecnológicos (7,2). La valoración más baja del bloque, los programas gubernamentales como tales (6,1), sigue estando claramente por encima del aprobado. Este bloque, junto con el de infraestructuras, representa el principal activo del ecosistema extremeño según las personas expertas.
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4
+g_nes_items("nes_items.csv", "Educación",
+  "Gráfico 1.24. Condiciones del entorno: educación",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+La educación y formación emprendedora es la condición peor valorada del informe, con una media de 3,8 y un fuerte contraste entre niveles. La etapa primaria y secundaria recibe valoraciones críticas: la atención al emprendimiento (2,4), la formación en principios de economía de mercado (2,8) y el fomento de la creatividad y la iniciativa personal (3,2). En cambio, la etapa postescolar mejora claramente: la educación en negocios y gestión alcanza un 5,8 y la formación profesional y continua un 5,0. La brecha entre etapa escolar y postescolar es uno de los desafíos estructurales más persistentes del ecosistema extremeño y coincide con la evidencia comparada que vincula la educación emprendedora temprana con la formación de actitudes, autoeficacia e intenciones emprendedoras a largo plazo (Fayolle y Gailly, 2015; Bae et al., 2014).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4
+g_nes_items("nes_items.csv", "Transferencia de I+D",
+  "Gráfico 1.25. Condiciones del entorno: transferencia de I+D",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+La transferencia de I+D+i obtiene una valoración media de 4,8, justo en el umbral del aprobado. La afirmación mejor valorada es que la base científica y tecnológica apoya de manera eficiente la creación de nuevas empresas (5,6), seguida de la existencia de subvenciones públicas adecuadas (5,1). La peor valorada es la asequibilidad para las empresas nuevas y en crecimiento de acceder a las tecnologías más avanzadas (3,6). El cuello de botella, por tanto, no parece estar en la oferta científica disponible sino en la capacidad económica del tejido emprendedor para incorporarla, lo que remite al problema clásico de la capacidad de absorción tecnológica de las pymes y a la necesidad de mecanismos efectivos de transferencia desde la academia (Cohen y Levinthal, 1990; Audretsch et al., 2020).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 3.8
+g_nes_items("nes_items.csv", "Normas sociales y culturales",
+  "Gráfico 1.26. Condiciones del entorno: normas sociales y culturales",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+Las normas sociales y culturales en relación con el emprendimiento se valoran en una media de 3,8, también en zona deficitaria. La cultura nacional es percibida como un apoyo al éxito individual fruto del esfuerzo personal (4,4) y, en menor medida, a la responsabilidad individual (4,1). Sin embargo, los expertos consideran insuficiente el fomento cultural de la asunción de riesgos en el ámbito emprendedor (3,1) y de la creatividad y la innovación (3,7). Persiste, en definitiva, una cultura que reconoce el esfuerzo pero penaliza el riesgo, dimensión esencial de la actividad emprendedora. La importancia de las normas culturales para explicar las diferencias regionales en emprendimiento ha sido ampliamente documentada en la línea de Hofstede et al. (2004) y Stephan y Pathak (2016).
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.2
+g_nes_items("nes_items.csv", "Infraestructura",
+  "Gráfico 1.27. Condiciones del entorno: infraestructuras",
+  "Fuente: GEM Extremadura, NES 2025. Escala 0-10.")
+```
+
+La valoración del bloque de infraestructuras presenta el rango más amplio del informe: la media se sitúa en 6,1, pero conviven afirmaciones con valoraciones muy altas y otras muy bajas. Las mejor valoradas son el acceso rápido a servicios de comunicación (7,7), el coste razonable de esos servicios (7,4) y el acceso a servicios básicos como gas, agua y electricidad (7,1). En el extremo opuesto, la infraestructura física general (carreteras, servicios públicos, comunicaciones y gestión de residuos) recibe una valoración crítica (3,4), y la disponibilidad de espacios de producción asequibles en alquiler también queda corta (4,6). Las telecomunicaciones aparecen, por tanto, como una fortaleza clara, mientras que las infraestructuras de movilidad y los espacios productivos siguen siendo un cuello de botella.
+
+::: {.callout-important icon=false title="Caso de emprendimiento (pendiente)"}
+Espacio reservado para el caso de emprendimiento de la edición —siempre 1-2 por informe GEM Extremadura—, a la espera del texto del equipo.
+:::
+
+## Principales hallazgos y conclusiones
+
+El análisis combinado de las percepciones de la población adulta (APS) y de la valoración cualificada de las personas expertas (NES) ofrece una imagen matizada del contexto emprendedor de Extremadura en 2025. Se identifican avances claros en el plano cognitivo-motivacional —oportunidades, habilidades, modelos de referencia y estatus social del emprendimiento—, pero se mantienen carencias estructurales relevantes en las condiciones institucionales del entorno (Bosma et al., 2020; Acs et al., 2014). A continuación se sintetizan los principales hallazgos.
+
+```{=typst}
+#columns(2, gutter: 18pt)[
+#text(fill: teal-gem, weight: "bold", size: 10.5pt)[Mejora generalizada de la percepción ciudadana]
+
+Los ocho indicadores de la APS analizados mejoran respecto a 2024. Los avances más significativos se registran en la percepción de oportunidades (del 27,1 % al 35,4 %), el reconocimiento del estatus social del éxito empresarial (del 49,5 % al 58,6 %), la presencia mediática del emprendimiento (del 37,3 % al 48,1 %) y la autopercepción de habilidades (del 47,1 % al 53,7 %). El único indicador que evoluciona en sentido desfavorable es el miedo al fracaso (54,3 %), que crece cuatro puntos y refleja una mayor cautela ante un contexto económico percibido como incierto (Cacciotti et al., 2016).
+
+#text(fill: teal-gem, weight: "bold", size: 10.5pt)[Persistencia de la brecha con España y Europa]
+
+A pesar de la mejora interanual, Extremadura sigue por debajo de la media española y europea en la mayoría de indicadores. La diferencia es especialmente marcada en la facilidad para iniciar un negocio (29,4 % frente al 51,8 % europeo), en la percepción de oportunidades (35,4 % frente al 50,0 %) y en la consideración del emprendimiento como buena opción profesional (45,6 % frente al 60,6 %). Solo en autopercepción de habilidades la región iguala a España y supera a Europa (Chen et al., 1998; Wilson et al., 2007).
+
+#text(fill: teal-gem, weight: "bold", size: 10.5pt)[Asimetrías provinciales y de género]
+
+Badajoz presenta una percepción más optimista de las condiciones objetivas para emprender, pero también el mayor miedo al fracaso (56,3 % frente al 50,7 % de Cáceres). Cáceres destaca por el capital social y simbólico del emprendimiento: mayor conocimiento de emprendedores recientes (57,7 %) y mejor valoración del estatus social (61,4 %). En género, la brecha mayor está en la autopercepción de habilidades (57,6 % hombres frente a 49,7 % mujeres) y, en sentido inverso, en el miedo al fracaso (Verheul et al., 2012).
+
+#text(fill: teal-gem, weight: "bold", size: 10.5pt)[Un entorno institucional con fortalezas y déficits]
+
+Ocho de las trece condiciones del entorno permanecen por debajo de 5 sobre 10 (North, 1990; Stenholm et al., 2013). Los déficits se concentran en la educación escolar (2,8), las normas sociales y culturales (3,8) y la financiación privada (3,9). En el lado positivo, los programas de apoyo (6,7 de media, incubadoras 7,3, parques científicos 7,2) y las telecomunicaciones se consolidan como activos competitivos, superando a España y la UE (Audretsch et al., 2020).
+
+#text(fill: teal-gem, weight: "bold", size: 10.5pt)[Implicaciones para la política regional]
+
+Tres líneas prioritarias: reforzar la educación emprendedora escolar (Fayolle y Gailly, 2015; Bae et al., 2014); desarrollar el ecosistema financiero privado, complementando las subvenciones públicas (Cumming et al., 2019); y proyectar las fortalezas en programas e infraestructuras de apoyo, alineándolas con sostenibilidad (Hall et al., 2010) y transferencia de I+D+i (Cohen y Levinthal, 1990).
+]
+```
+
+::: {.content-hidden when-format="typst"}
+### Mejora generalizada de la percepción ciudadana
+
+Los ocho indicadores de la APS analizados mejoran respecto a 2024. Los avances más significativos se registran en la percepción de oportunidades (del 27,1 % al 35,4 %), el reconocimiento del estatus social del éxito empresarial (del 49,5 % al 58,6 %), la presencia mediática del emprendimiento (del 37,3 % al 48,1 %) y la autopercepción de habilidades (del 47,1 % al 53,7 %). Este avance, especialmente en la dimensión de oportunidades, es coherente con la evidencia que vincula la mejora de las percepciones individuales con incrementos posteriores de la actividad emprendedora temprana (Arenius y Minniti, 2005; Bosma et al., 2012). El único indicador que evoluciona en sentido desfavorable es el miedo al fracaso (54,3 %), que crece cuatro puntos respecto al ejercicio anterior y refleja una mayor cautela ante un contexto económico percibido como incierto (Cacciotti et al., 2016).
+
+### Persistencia de la brecha con España y Europa
+
+A pesar de la mejora interanual, Extremadura sigue por debajo de la media española y europea en la mayoría de indicadores ciudadanos. La diferencia es especialmente marcada en la facilidad para iniciar un negocio (29,4 % frente al 51,8 % europeo), en la percepción de oportunidades (35,4 % frente al 50,0 %) y en la consideración del emprendimiento como buena opción profesional (45,6 % frente al 60,6 %). Solo en autopercepción de habilidades la región iguala a España y supera a Europa, lo que apunta a un activo regional bien consolidado (Chen et al., 1998; Wilson et al., 2007). La combinación de mayor miedo al fracaso y menor percepción de oportunidades ayuda a explicar el menor dinamismo emprendedor regional frente a los referentes (Wennekers et al., 2007).
+
+### Asimetrías provinciales y de género
+
+La región muestra una fisonomía bipolar entre ambas provincias. Badajoz presenta una percepción más optimista de las condiciones objetivas para emprender —oportunidades, habilidades y facilidad—, pero también el mayor miedo al fracaso (56,3 % frente al 50,7 % de Cáceres). Cáceres, en cambio, destaca por el capital social y simbólico del emprendimiento: mayor conocimiento de emprendedores recientes (57,7 %) y mejor valoración del estatus social del éxito empresarial (61,4 %). En cuanto al género, la brecha más relevante se observa en la autopercepción de habilidades (57,6 % en hombres frente al 49,7 % en mujeres) y, en sentido inverso, en el miedo al fracaso, persistentemente mayor en mujeres, lo que reproduce los patrones internacionales documentados por Wilson et al. (2007) y Verheul et al. (2012).
+
+### Un entorno institucional con fortalezas y déficits acusados
+
+Las personas expertas dibujan un ecosistema de geometría desigual. Ocho de las trece condiciones del entorno permanecen por debajo de 5 sobre 10, lo que sugiere debilidades institucionales relevantes (North, 1990; Stenholm et al., 2013). Los principales déficits se concentran en la educación emprendedora escolar (2,8), las normas sociales y culturales (3,8) y la financiación privada (3,9), con un deterioro sostenido de la educación escolar desde 2022. En el lado positivo, los programas específicos de apoyo al emprendimiento (6,7 de media, con incubadoras en 7,3 y parques científicos en 7,2) y las infraestructuras de telecomunicaciones se consolidan como activos competitivos claros, superando ampliamente a España y la Unión Europea. La región presenta así un patrón propio de las economías periféricas con políticas públicas activas: fortaleza pública e infraestructural acompañada de déficits formativos, culturales y de capital privado (Audretsch et al., 2020).
+
+### Implicaciones para la política regional de emprendimiento
+
+Los resultados sugieren tres líneas de actuación prioritarias. Primero, reforzar la educación emprendedora en la etapa escolar, dado el papel clave de esta etapa en la formación de actitudes y autoeficacia (Fayolle y Gailly, 2015; Bae et al., 2014). Segundo, desarrollar el ecosistema financiero privado complementando, sin sustituir, las subvenciones públicas, ámbito en el que se concentran las peores valoraciones (Cumming et al., 2019). Y tercero, mantener y proyectar las fortalezas existentes en programas e infraestructuras de apoyo, especialmente incubadoras, parques científico-tecnológicos y telecomunicaciones, alineándolas con las dimensiones emergentes de sostenibilidad (Hall et al., 2010; Muñoz y Cohen, 2018) y de transferencia de I+D+i hacia el tejido productivo (Cohen y Levinthal, 1990).
+:::
+
+En conjunto, 2025 puede leerse como un año de inflexión positiva en la dimensión perceptiva del emprendimiento extremeño, todavía pendiente de consolidarse en una mejora de las condiciones institucionales que la sostengan en el medio plazo.

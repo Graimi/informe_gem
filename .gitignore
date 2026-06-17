@@ -13,3 +13,8 @@ informe/*_files/
 .RData
 renv/library/
 renv/staging/
+
+# Vistas previas y artefactos derivados (regenerables)
+informe/_preview-*.pdf
+ediciones/*/datos_entregados/_dump/
+ediciones/*/prototipos/
