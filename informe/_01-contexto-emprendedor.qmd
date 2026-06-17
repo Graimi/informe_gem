@@ -261,7 +261,7 @@ g_barras_ambito("nes_provincias.csv", c("Extremadura", "Badajoz", "Cáceres"),
   col = "nes", campo_cat = "condicion")
 ```
 
-El análisis por provincias muestra que Badajoz es la mejor valorada por las personas expertas en doce de las trece condiciones del entorno emprendedor, con diferencias especialmente marcadas en la facilidad de acceso a la financiación (5,3 frente a 3,7 en Cáceres), las barreras del mercado interno (4,8 frente a 3,8) y el acceso a infraestructura comercial y profesional (5,9 frente a 4,7). En normas sociales y culturales ambas provincias reciben idéntica valoración (3,8), y solo en educación escolar Cáceres queda por delante de Badajoz (2,6 frente a 3,0), aunque ambas con cifras críticas.
+El análisis por provincias muestra que Badajoz es la mejor valorada por las personas expertas en doce de las trece condiciones del entorno emprendedor, con diferencias especialmente marcadas en la facilidad de acceso a la financiación (5,3 frente a 3,7 en Cáceres), las barreras del mercado interno (4,8 frente a 3,8) y el acceso a infraestructura comercial y profesional (5,9 frente a 4,7). En normas sociales y culturales ambas provincias reciben idéntica valoración (3,8) —la única condición en la que no hay ventaja de Badajoz—, mientras que la menor diferencia a favor de Badajoz se registra en educación escolar (3,0 frente a 2,6 de Cáceres), aunque ambas con cifras críticas.
 
 ```{r}
 #| fig-width: 9.5

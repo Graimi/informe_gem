@@ -87,7 +87,7 @@ g_serie_colectivo <- function(archivo, indicador_sel, titulo, fuente) {
 g_genero <- function(archivo, indicador_sel, titulo, fuente) {
   d <- .leer(archivo) |> filter(indicador == indicador_sel) |>
     mutate(colectivo = factor(colectivo,
-             levels = c("Total", "Población no involucrada", "Población involucrada")),
+             levels = c("Población no involucrada", "Población involucrada")),
            sexo = factor(sexo, levels = c("Hombre", "Mujer")))
   ggplot(d, aes(pct, colectivo, fill = sexo, colour = sexo)) +
     geom_pill(width = 0.42, dodge = 0.78, radio = 2.4) +
