@@ -4,7 +4,7 @@
 # theme_gem, geom_pill, fmt_pct, fmt_num, escala_var, colores_gem).
 
 suppressPackageStartupMessages({
-  library(ggplot2); library(dplyr); library(readr); library(forcats)
+  library(ggplot2); library(dplyr); library(readr)
 })
 
 # Envuelve etiquetas largas en varias líneas.
@@ -87,9 +87,9 @@ g_serie_colectivo <- function(archivo, indicador_sel, titulo, fuente) {
 g_genero <- function(archivo, indicador_sel, titulo, fuente) {
   d <- .leer(archivo) |> filter(indicador == indicador_sel) |>
     mutate(colectivo = factor(colectivo,
-             levels = c("Población involucrada", "Población no involucrada", "Total")),
+             levels = c("Total", "Población no involucrada", "Población involucrada")),
            sexo = factor(sexo, levels = c("Hombre", "Mujer")))
-  ggplot(d, aes(pct, fct_rev(colectivo), fill = sexo, colour = sexo)) +
+  ggplot(d, aes(pct, colectivo, fill = sexo, colour = sexo)) +
     geom_pill(width = 0.42, dodge = 0.78, radio = 2.4) +
     geom_text(aes(label = paste0("   ", fmt_pct(pct))), position = position_dodge(0.78), hjust = 0,
               size = 2.8, fontface = "bold", show.legend = FALSE) +
@@ -104,9 +104,9 @@ g_genero <- function(archivo, indicador_sel, titulo, fuente) {
 # --- E) Por provincia (Badajoz/Cáceres) a través de colectivos ----------------
 g_prov_colectivo <- function(archivo, indicador_sel, titulo, fuente) {
   d <- .leer(archivo) |> filter(indicador == indicador_sel) |>
-    mutate(colectivo = factor(colectivo, levels = c("Población involucrada", "Población no involucrada")),
+    mutate(colectivo = factor(colectivo, levels = c("Población no involucrada", "Población involucrada")),
            provincia = factor(provincia, levels = c("Badajoz", "Cáceres")))
-  ggplot(d, aes(pct, fct_rev(colectivo), fill = provincia, colour = provincia)) +
+  ggplot(d, aes(pct, colectivo, fill = provincia, colour = provincia)) +
     geom_pill(width = 0.42, dodge = 0.78, radio = 2.4) +
     geom_text(aes(label = paste0("   ", fmt_pct(pct))), position = position_dodge(0.78), hjust = 0,
               size = 2.8, fontface = "bold", show.legend = FALSE) +
@@ -121,7 +121,7 @@ g_prov_colectivo <- function(archivo, indicador_sel, titulo, fuente) {
 # --- F) NES: ítems de un bloque (escala 0-10), píldoras ordenadas, línea media -
 g_nes_items <- function(archivo, bloque_sel, titulo, fuente) {
   d <- .leer(archivo) |> filter(bloque == bloque_sel) |>
-    mutate(item = .wrap(item, 46), item = fct_reorder(item, valor))
+    mutate(item = .wrap(item, 46), item = reorder(item, valor))
   media <- mean(d$valor)
   ggplot(d, aes(valor, item)) +
     geom_pill(fill = colores_gem$teal, colour = colores_gem$teal, width = 0.58, radio = 2.6) +
