@@ -1,15 +1,29 @@
 # Funciones comunes de configuración y lectura de datos.
-# Los capítulos .qmd y los scripts cargan este fichero con source().
+# Los capítulos .qmd y los scripts cargan este fichero al principio.
+#
+# La raíz del proyecto se localiza con el fichero centinela .gem_root, no con
+# `here`: como _quarto.yml vive en informe/, `here` anclaría ahí y no en la raíz
+# del repo (donde están R/ y ediciones/). El centinela es robusto a cualquier
+# directorio de trabajo.
 
-library(here)
-
-# Lee informe/_variables.yml: misma configuración para Quarto y para R.
-leer_config <- function() {
-  yaml::read_yaml(here("informe", "_variables.yml"))
+raiz_proyecto <- function() {
+  rprojroot::find_root(rprojroot::has_file(".gem_root"))
 }
 
+# Atajos para construir rutas desde la raíz del proyecto.
+ruta_R <- function(...) file.path(raiz_proyecto(), "R", ...)
+
 ruta_edicion <- function(..., edicion = leer_config()$edicion) {
-  here("ediciones", edicion, ...)
+  file.path(raiz_proyecto(), "ediciones", edicion, ...)
+}
+
+# Lee informe/_variables.yml: misma configuración para Quarto y para R.
+# Forzamos lectura UTF-8 para no depender del locale del sistema (en algunos
+# entornos es C y rompería los acentos del fichero).
+leer_config <- function() {
+  ruta <- file.path(raiz_proyecto(), "informe", "_variables.yml")
+  yaml::yaml.load(paste(readLines(ruta, encoding = "UTF-8", warn = FALSE),
+                        collapse = "\n"))
 }
 
 # Lee un indicador de procesados/ por nombre, p. ej. leer_indicador("serie_tea").
