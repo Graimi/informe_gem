@@ -19,15 +19,15 @@ date-format: "YYYY"
 
 {{< include _cuadro-indicadores.qmd >}}
 
-{{< include _01-valores-percepciones.qmd >}}
+{{< include _01-contexto-emprendedor.qmd >}}
 
-{{< include _02-actividad-emprendedora.qmd >}}
+{{< include _02-proceso-emprendedor.qmd >}}
 
-{{< include _03-aspiraciones.qmd >}}
+{{< include _03-perfil-emprendedor.qmd >}}
 
-{{< include _04-entorno-emprendedor.qmd >}}
+{{< include _04-digitalizacion.qmd >}}
 
-{{< include _05-conclusiones.qmd >}}
+{{< include _05-sostenibilidad-ods.qmd >}}
 
 {{< include _90-bibliografia.qmd >}}
 

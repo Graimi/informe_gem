@@ -1,0 +1,11 @@
+# El proceso emprendedor
+
+<!-- Capítulo 2: indicadores del proceso emprendedor (potencial, naciente, nuevo,
+     consolidado, abandono), TEA, dinámica histórica, género, provincias,
+     rural/urbano y comparativa España/Europa. Pendiente de maquetar en la
+     siguiente fase (datos en serie_proceso_extremadura.csv y los CSV de cap 2). -->
+
+::: {.callout-note}
+Capítulo en preparación. El gráfico de evolución (potenciales/TEA/establecidas)
+ya está validado en `ediciones/2025-26/prototipos/`.
+:::

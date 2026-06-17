@@ -1,0 +1,194 @@
+---
+title: "GEM Extremadura — Gráficos propuestos"
+subtitle: "Capítulo 1. Contexto emprendedor (rediseño)"
+author: "Equipo GEM Extremadura"
+date: today
+date-format: "YYYY"
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  typst:
+    mainfont: "Arial"
+    fontsize: 10.5pt
+    toc: false
+    include-in-header:
+      - estilo-gem.typ
+---
+
+```{r}
+#| include: false
+library(ggplot2); library(dplyr); library(readr)
+source(rprojroot::find_root_file("R", "utilidades.R", criterion = rprojroot::has_file(".gem_root")))
+source(ruta_R("theme_gem.R")); source(ruta_R("graficos_cap1.R"))
+fa <- "Fuente: GEM Extremadura, APS 2025."
+fg <- "Fuente: GEM Global / GEM Extremadura, APS 2025."
+fn <- "Fuente: GEM Extremadura, NES 2025. Escala 0-10; línea punteada = umbral 5."
+```
+
+## Percepciones de la población (APS)
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+g_barras_anio("percepciones_anio.csv", "Gráfico 1.1. Percepción de la población para emprender en Extremadura (2024-2025)", fa)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.2
+g_barras_ambito("percepciones_benchmark.csv", c("Extremadura","España","Unión Europea"), "Gráfico 1.2. Percepción del contexto emprendedor: Extremadura, España y Europa", fg)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.2
+g_barras_ambito("percepciones_provincias.csv", c("Extremadura","Cáceres","Badajoz"), "Gráfico 1.3. Percepción del contexto emprendedor por provincias", fa)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Modelos de referencia", "Gráfico 1.4. Evolución de la percepción de modelos de referencia (2015-2025)", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.4
+g_genero("percepciones_genero.csv", "Modelos de referencia", "Gráfico 1.5. Modelos de referencia por género", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Modelos de referencia", "Gráfico 1.6. Modelos de referencia por provincias", fa)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Oportunidades", "Gráfico 1.7. Evolución de la percepción de oportunidades (2015-2025)", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.4
+g_genero("percepciones_genero.csv", "Oportunidades", "Gráfico 1.8. Percepción de oportunidades por género", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Oportunidades", "Gráfico 1.9. Percepción de oportunidades por provincias", fa)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Habilidades", "Gráfico 1.10. Evolución de la percepción de habilidades (2015-2025)", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.4
+g_genero("percepciones_genero.csv", "Habilidades", "Gráfico 1.11. Percepción de habilidades por género", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Habilidades", "Gráfico 1.12. Percepción de habilidades por provincias", fa)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.4
+g_serie_colectivo("percepciones_series.csv", "Miedo al fracaso", "Gráfico 1.13. Evolución de la percepción del miedo al fracaso (2015-2025)", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.4
+g_genero("percepciones_genero.csv", "Miedo al fracaso", "Gráfico 1.14. Percepción del miedo al fracaso por género", fa)
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+g_prov_colectivo("percepciones_prov_colectivo.csv", "Miedo al fracaso", "Gráfico 1.15. Percepción del miedo al fracaso por provincias", fa)
+```
+
+## Condiciones del entorno (NES)
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.8
+g_barras_ambito("nes_benchmark.csv", c("Extremadura","España","Unión Europea"), "Gráfico 1.16. Condiciones del entorno: Extremadura, España y UE", fn, col="nes", campo_cat="condicion")
+```
+
+```{r}
+#| fig-width: 11
+#| fig-height: 7
+g_nes_evolucion("nes_evolucion.csv", "Gráfico 1.17. Evolución de las condiciones del entorno (2021-2025)", fn)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6.8
+g_barras_ambito("nes_provincias.csv", c("Extremadura","Badajoz","Cáceres"), "Gráfico 1.18. Condiciones del entorno por provincias", fn, col="nes", campo_cat="condicion")
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.6
+g_nes_items("nes_items.csv", "Mujeres", "Gráfico 1.19. Condiciones del entorno para mujeres emprendedoras", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 6.2
+g_nes_items("nes_items.csv", "Sostenibilidad", "Gráfico 1.20. Condiciones del entorno en sostenibilidad", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 6
+g_nes_items("nes_items.csv", "Financiación", "Gráfico 1.21. Condiciones del entorno: financiación", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.6
+g_nes_items("nes_items.csv", "Políticas gubernamentales", "Gráfico 1.22. Condiciones del entorno: políticas gubernamentales", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.2
+g_nes_items("nes_items.csv", "Programas de apoyo", "Gráfico 1.23. Condiciones del entorno: programas de apoyo", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4
+g_nes_items("nes_items.csv", "Educación", "Gráfico 1.24. Condiciones del entorno: educación", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4
+g_nes_items("nes_items.csv", "Transferencia de I+D", "Gráfico 1.25. Condiciones del entorno: transferencia de I+D", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 3.8
+g_nes_items("nes_items.csv", "Normas sociales y culturales", "Gráfico 1.26. Condiciones del entorno: normas sociales y culturales", fn)
+```
+
+```{r}
+#| fig-width: 9.5
+#| fig-height: 4.2
+g_nes_items("nes_items.csv", "Infraestructura", "Gráfico 1.27. Condiciones del entorno: infraestructuras", fn)
+```
